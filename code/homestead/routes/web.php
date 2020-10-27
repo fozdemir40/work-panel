@@ -21,3 +21,7 @@ Route::get('/', function () {
 Route::get('news', 'NewsItemController@index')->name('news');
 
 Route::get('news/{id}', 'NewsItemController@show')->name('news.show');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
