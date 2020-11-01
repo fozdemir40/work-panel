@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsItemController;
 
@@ -18,10 +19,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('news', 'NewsItemController@index')->name('news');
-
-Route::get('news/{id}', 'NewsItemController@show')->name('news.show');
 
 Auth::routes();
 
+
+
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:isAdmin')->group(function(){
+    Route::resource('/users', 'UsersController');
+});

@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Http\Middleware\CheckUserRole;
+use App\Role\RoleChecker;
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
